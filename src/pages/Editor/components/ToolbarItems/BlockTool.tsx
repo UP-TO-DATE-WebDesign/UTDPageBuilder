@@ -1,17 +1,17 @@
 import { Plus } from "lucide-react";
-import { useSidebarStore } from "../../../../components/sidebarStore";
+import { useDialogStore } from "../../../../components/dialogStore";
 import BlocksPanel from "../BlocksPanel";
+import { Button } from "@/components/ui/button";
 
 export default function BlockTool() {
-  const toggleSidebar = useSidebarStore((state) => state.toggleSidebar);
+  const openDialog = useDialogStore((state) => state.openDialog);
 
   return (
-    <button
+    <Button
       type="button"
-      className="p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-      onClick={() => toggleSidebar("blocks", <BlocksPanel />)}
+      onClick={() => openDialog(<BlocksPanel />, "Blocks", "max-w-[700px]")}
     >
-      <Plus className="h-4 w-4 text-primary-500" />
-    </button>
+      <Plus className="h-4 w-4" />
+    </Button>
   );
 }

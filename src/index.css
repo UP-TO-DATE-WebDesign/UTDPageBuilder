@@ -1,7 +1,16 @@
+@import "@grapesjs/studio-sdk/style" layer(studio-sdk);
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+
+/* The studio SDK stylesheet above ships an unlayered Tailwind reset, and
+   unlayered CSS always beats layered CSS regardless of specificity. Without
+   the explicit layer() above it was silently zeroing shared --tw-translate,
+   --tw-scale and --tw-backdrop-blur custom properties app-wide, breaking any
+   composed transform or backdrop-filter utility (dialog centering, dialog
+   animations, backdrop blur). Importing it into an explicit layer, before
+   Tailwind registers its own layers, keeps it lowest priority. */
 
 @custom-variant dark (&:is(.dark *));
 

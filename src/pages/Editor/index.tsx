@@ -3,19 +3,18 @@ import { useSearchParams } from "react-router-dom";
 import StudioEditor from "@grapesjs/studio-sdk/react";
 import type { CreateEditorOptions } from "@grapesjs/studio-sdk";
 import type { Editor as GrapesEditor } from "grapesjs";
-import DeviceSelector from "./components/DeviceSelector";
 import { useEditorStore } from "./stores/editorStore";
 import { globalPageSettings } from "./siteSettings";
 import { useUTDBlocksStore } from "../../stores/utdBlocksStore";
 
-import "@grapesjs/studio-sdk/style";
 import ToolBar from "./components/ToolBar";
 import SideBar from "../../components/SideBar";
 import RightSideBar from "../../components/RightSideBar";
+import AppDialog from "../../components/AppDialog";
 import { useRightSidebarStore } from "../../components/rightSidebarStore";
 import { fetchEditorContent, fetchSite } from "./services/UTDApi";
-import UTDPagesSelector from "./components/UTDPagesSelector";
 import { useUTDPagesStore } from "../../stores/utdPagesStore";
+import HeaderBar from "./components/HeaderBar";
 
 export default function Editor() {
   const setEditor = useEditorStore((state) => state.setEditor);
@@ -84,9 +83,12 @@ export default function Editor() {
   }, [setPages, siteId, pageId]);
 
   useEffect(() => {
-    useUTDBlocksStore.getState().loadBlocks().catch((err) => {
-      console.error("Failed to load blocks", err);
-    });
+    useUTDBlocksStore
+      .getState()
+      .loadBlocks()
+      .catch((err) => {
+        console.error("Failed to load blocks", err);
+      });
   }, []);
 
   const handleEditorReady = useCallback(
@@ -120,16 +122,14 @@ export default function Editor() {
       <ToolBar />
       <SideBar />
       <RightSideBar />
+      <AppDialog />
       <div className="flex min-h-0 flex-1">
         <div
           className={`flex h-full flex-1 flex-col transition-all duration-300 ease-in-out ${
             rightSidebarOpen ? "mr-80" : "mr-0"
           }`}
         >
-          <div className="flex gap-2 items-center">
-            <UTDPagesSelector />
-            <DeviceSelector />
-          </div>
+          <HeaderBar />
           <div className="min-h-0 flex-1">
             <StudioEditor onReady={handleEditorReady} options={options} />
           </div>

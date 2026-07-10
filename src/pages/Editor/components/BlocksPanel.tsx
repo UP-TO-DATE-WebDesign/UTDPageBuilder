@@ -1,58 +1,93 @@
+import { useMemo, useState } from "react";
+import { ImageOff } from "lucide-react";
 import { useBlocksStore, type BlockInfo } from "../stores/blocksStore";
 
-function groupByCategory(blocks: BlockInfo[]): Map<string, BlockInfo[]> {
-  const groups = new Map<string, BlockInfo[]>();
+function getCategories(blocks: BlockInfo[]): string[] {
+  const categories = new Set<string>();
   for (const block of blocks) {
-    const key = block.category || "Other";
-    const group = groups.get(key);
-    if (group) {
-      group.push(block);
-    } else {
-      groups.set(key, [block]);
-    }
+    categories.add(block.category || "Other");
   }
-  return groups;
+  return Array.from(categories).sort((a, b) => a.localeCompare(b));
 }
 
 export default function BlocksPanel() {
   const blocks = useBlocksStore((state) => state.blocks);
   const startBlockDrag = useBlocksStore((state) => state.startBlockDrag);
   const appendBlock = useBlocksStore((state) => state.appendBlock);
-  const groups = groupByCategory(blocks);
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories = useMemo(() => getCategories(blocks), [blocks]);
+  const visibleBlocks = selectedCategory
+    ? blocks.filter((block) => (block.category || "Other") === selectedCategory)
+    : blocks;
+
+  if (blocks.length === 0) {
+    return <p className="px-2 text-sm text-gray-400">Loading…</p>;
+  }
 
   return (
-    <div>
-      <h2 className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
-        Blocks
-      </h2>
-      {blocks.length === 0 ? (
-        <p className="px-2 text-sm text-gray-400">Loading…</p>
-      ) : (
-        Array.from(groups.entries()).map(([category, items]) => (
-          <div key={category} className="mb-2">
-            <p className="px-2 pb-1 text-xs font-medium text-gray-400">
-              {category}
-            </p>
-            <div className="grid grid-cols-1 gap-1 px-1">
-              {items.map((block) => (
+    <div className="flex h-[70vh] gap-3">
+      <div className="w-36 shrink-0 overflow-y-auto border-r border-gray-200 pr-3">
+        <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
+          Categories
+        </p>
+        <button
+          type="button"
+          onClick={() => setSelectedCategory(null)}
+          className={`mb-1 block w-full rounded px-2 py-1 text-left text-xs ${
+            selectedCategory === null
+              ? "bg-primary-100 text-primary-700"
+              : "text-gray-600 hover:bg-gray-100"
+          }`}
+        >
+          All
+        </button>
+        {categories.map((category) => (
+          <button
+            key={category}
+            type="button"
+            onClick={() => setSelectedCategory(category)}
+            className={`mb-1 block w-full truncate rounded px-2 py-1 text-left text-xs ${
+              selectedCategory === category
+                ? "bg-primary-100 text-primary-700"
+                : "text-gray-600 hover:bg-gray-100"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <div className="min-w-0 flex-1 overflow-y-auto pr-1">
+        <p className="mb-2 px-1 text-xs font-semibold uppercase tracking-wide text-gray-400">
+          {selectedCategory ?? "All Blocks"}
+        </p>
+        <div className="grid grid-cols-4 gap-2">
+          {visibleBlocks.map((block) => (
+            <div
+              key={block.id}
+              draggable
+              onDragStart={(e) => startBlockDrag(block, e.nativeEvent)}
+              onClick={() => appendBlock(block)}
+              className="group flex cursor-grab flex-col overflow-hidden rounded border border-gray-200 hover:border-primary-400 active:cursor-grabbing"
+            >
+              {block.media ? (
                 <div
-                  key={block.id}
-                  draggable
-                  onDragStart={(e) => startBlockDrag(block, e.nativeEvent)}
-                  onClick={() => appendBlock(block)}
-                  className="flex cursor-grab items-center gap-2 rounded border border-gray-200 p-2 text-center hover:bg-gray-100 active:cursor-grabbing"
-                >
-                  <div
-                    className="h-4 w-4 text-gray-500"
-                    dangerouslySetInnerHTML={{ __html: block.media }}
-                  />
-                  <span className="text-xs text-gray-700">{block.label}</span>
+                  className="aspect-video w-full bg-gray-100"
+                  dangerouslySetInnerHTML={{ __html: block.media }}
+                />
+              ) : (
+                <div className="flex aspect-video w-full items-center justify-center bg-gray-100 text-gray-300">
+                  <ImageOff className="h-5 w-5" />
                 </div>
-              ))}
+              )}
+              <span className="truncate px-1.5 py-1 text-[11px] text-gray-700 group-hover:text-primary-600">
+                {block.label}
+              </span>
             </div>
-          </div>
-        ))
-      )}
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

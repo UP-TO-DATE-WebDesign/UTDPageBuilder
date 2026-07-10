@@ -1,5 +1,7 @@
 import { Monitor, Smartphone, Tablet } from "lucide-react";
 import { useDevicesStore, type DeviceInfo } from "../stores/devicesStore";
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
 
 function deviceIcon(device: DeviceInfo) {
   const id = device.id.toLowerCase();
@@ -16,11 +18,11 @@ export default function DeviceSelector() {
   if (devices.length === 0) return null;
 
   return (
-    <div className="flex items-center justify-center gap-1 border-b border-gray-200 bg-white py-1">
+    <ButtonGroup>
       {devices.map((device) => {
         const Icon = deviceIcon(device);
         return (
-          <button
+          <Button
             key={device.id}
             type="button"
             onClick={() => selectDevice(device)}
@@ -32,9 +34,9 @@ export default function DeviceSelector() {
             }`}
           >
             <Icon className="h-4 w-4" />
-          </button>
+          </Button>
         );
       })}
-    </div>
+    </ButtonGroup>
   );
 }
