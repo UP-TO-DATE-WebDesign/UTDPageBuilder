@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import StudioEditor from "@grapesjs/studio-sdk/react";
 import type { CreateEditorOptions } from "@grapesjs/studio-sdk";
@@ -13,7 +13,9 @@ import ToolBar from "./components/ToolBar";
 import SideBar from "../../components/SideBar";
 import RightSideBar from "../../components/RightSideBar";
 import { useRightSidebarStore } from "../../components/rightSidebarStore";
-import { fetchEditorContent } from "./services/UTDApi";
+import { fetchEditorContent, fetchSite } from "./services/UTDApi";
+import UTDPagesSelector from "./components/UTDPagesSelector";
+import { useUTDPagesStore } from "../../stores/utdPagesStore";
 
 export default function Editor() {
   const setEditor = useEditorStore((state) => state.setEditor);
@@ -21,6 +23,8 @@ export default function Editor() {
   const [searchParams] = useSearchParams();
   const siteId = searchParams.get("siteId");
   const pageId = searchParams.get("pageId");
+
+  const setPages = useUTDPagesStore((state) => state.setPages);
 
   const [options] = useState<CreateEditorOptions>(() => ({
     licenseKey:
@@ -66,6 +70,22 @@ export default function Editor() {
     // },
   }));
 
+  useEffect(() => {
+    if (!siteId || !pageId) {
+      console.log("Missing siteId/pageId query params.");
+      return;
+    }
+
+    fetchSite({ siteId, pageId })
+      .then((site) => {
+        setPages(site.pages);
+      })
+      .catch((err) => {
+        console.error("Failed to load site pages", err);
+        console.error("Failed to load site pages.");
+      });
+  }, [setPages, siteId, pageId]);
+
   const handleEditorReady = useCallback(
     async (editor: GrapesEditor) => {
       setEditor(editor);
@@ -104,7 +124,10 @@ export default function Editor() {
             rightSidebarOpen ? "mr-80" : "mr-0"
           }`}
         >
-          <DeviceSelector />
+          <div className="flex gap-2 items-center">
+            <UTDPagesSelector />
+            <DeviceSelector />
+          </div>
           <div className="min-h-0 flex-1">
             <StudioEditor onReady={handleEditorReady} options={options} />
           </div>
