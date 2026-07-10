@@ -37,7 +37,7 @@ function ImageField() {
         type="text"
         value={imageSrc}
         onChange={(e) => setImageSrc(e.target.value)}
-        className="w-full rounded border border-gray-200 px-2 py-1.5 text-sm text-gray-700"
+        className="w-full"
       />
     </Field>
   );
@@ -67,7 +67,7 @@ function TraitField({ trait }: { trait: TraitInfo }) {
         <select
           value={trait.value}
           onChange={(e) => setTraitValue(trait.name, e.target.value)}
-          className="w-full rounded border border-gray-200 px-2 py-1.5 text-sm text-gray-700"
+          className="w-full"
         >
           {trait.options.map((option) => (
             <option key={option.id} value={option.id}>
@@ -87,7 +87,7 @@ function TraitField({ trait }: { trait: TraitInfo }) {
           type="color"
           value={trait.value || "#000000"}
           onChange={(e) => setTraitValue(trait.name, e.target.value)}
-          className="h-7 w-10 rounded border border-gray-200"
+          className="h-7 w-10"
         />
       </Field>
     );
@@ -100,7 +100,7 @@ function TraitField({ trait }: { trait: TraitInfo }) {
         type={trait.type === "number" ? "number" : "text"}
         value={trait.value}
         onChange={(e) => setTraitValue(trait.name, e.target.value)}
-        className="w-full rounded border border-gray-200 px-2 py-1.5 text-sm text-gray-700"
+        className="w-full"
       />
     </Field>
   );
@@ -150,7 +150,7 @@ function CustomAttributes() {
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder="name"
-            className="min-w-0 flex-1 rounded border border-gray-200 px-2 py-1 text-xs text-gray-700"
+            className="min-w-0 flex-1"
           />
           <Input
             type="text"
@@ -163,7 +163,7 @@ function CustomAttributes() {
               }
             }}
             placeholder="value"
-            className="min-w-0 flex-1 rounded border border-gray-200 px-2 py-1 text-xs text-gray-700"
+            className="min-w-0 flex-1"
           />
           <Button type="button" variant="secondary" onClick={handleAdd}>
             Add
