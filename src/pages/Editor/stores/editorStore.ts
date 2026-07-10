@@ -4,6 +4,7 @@ import { useBlocksStore } from "./blocksStore";
 import { useDevicesStore } from "./devicesStore";
 import { useLayersStore } from "./layersStore";
 import { usePagesStore } from "./pagesStore";
+import { useStylesStore } from "./stylesStore";
 
 interface EditorStoreState {
   editor: GrapesEditor | null;
@@ -23,6 +24,7 @@ export const useEditorStore = create<EditorStoreState>((set, get) => ({
     usePagesStore.getState().setEditor(editor);
     useLayersStore.getState().setEditor(editor);
     useDevicesStore.getState().setEditor(editor);
+    useStylesStore.getState().setEditor(editor);
 
     editor.on("update", () => get().refreshProjectData());
   },

@@ -3,7 +3,6 @@ import StudioEditor from "@grapesjs/studio-sdk/react";
 import type { CreateEditorOptions } from "@grapesjs/studio-sdk";
 import type { Editor as GrapesEditor } from "grapesjs";
 import DeviceSelector from "./components/DeviceSelector";
-import ProjectDataPanel from "./components/ProjectDataPanel";
 import { useEditorStore } from "./stores/editorStore";
 import { globalPageSettings } from "./siteSettings";
 import { bootstrapBlocks } from "./blocks/bootstrapBlocks";
