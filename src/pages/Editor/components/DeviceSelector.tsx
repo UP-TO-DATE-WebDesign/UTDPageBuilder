@@ -25,6 +25,7 @@ export default function DeviceSelector() {
           <Button
             key={device.id}
             type="button"
+            variant="outline"
             onClick={() => selectDevice(device)}
             title={device.name}
             className={`flex h-8 w-8 items-center justify-center rounded hover:bg-gray-100 ${

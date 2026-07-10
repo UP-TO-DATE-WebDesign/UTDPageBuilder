@@ -28,7 +28,7 @@ export default function BlocksPanel() {
 
   return (
     <div className="flex h-[70vh] gap-3">
-      <div className="w-36 shrink-0 overflow-y-auto border-r border-gray-200 pr-3">
+      <div className="w-36 shrink-0 overflow-y-auto border-r border-subtle-200 pr-3">
         <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
           Categories
         </p>
@@ -37,8 +37,8 @@ export default function BlocksPanel() {
           onClick={() => setSelectedCategory(null)}
           className={`mb-1 block w-full rounded px-2 py-1 text-left text-xs ${
             selectedCategory === null
-              ? "bg-primary-100 text-primary-700"
-              : "text-gray-600 hover:bg-gray-100"
+              ? "text-primary-700 font-bold"
+              : "text-gray-600 hover:primary-100 dark:hover:bg-gray-800"
           }`}
         >
           All
@@ -50,8 +50,8 @@ export default function BlocksPanel() {
             onClick={() => setSelectedCategory(category)}
             className={`mb-1 block w-full truncate rounded px-2 py-1 text-left text-xs ${
               selectedCategory === category
-                ? "bg-primary-100 text-primary-700"
-                : "text-gray-600 hover:bg-gray-100"
+                ? "text-primary-700 font-bold"
+                : "text-gray-600 hover:primary-100 dark:hover:bg-gray-800"
             }`}
           >
             {category}
@@ -69,19 +69,19 @@ export default function BlocksPanel() {
               draggable
               onDragStart={(e) => startBlockDrag(block, e.nativeEvent)}
               onClick={() => appendBlock(block)}
-              className="group flex cursor-grab flex-col overflow-hidden rounded border border-gray-200 hover:border-primary-400 active:cursor-grabbing"
+              className="group flex cursor-grab flex-col overflow-hidden rounded border border-gray-200 dark:border-gray-800 hover:border-primary-400 dark:hover:border-primary-400 active:cursor-grabbing"
             >
               {block.media ? (
                 <div
-                  className="aspect-video w-full bg-gray-100"
+                  className="aspect-video w-full bg-gray-100 dark:bg-gray-800"
                   dangerouslySetInnerHTML={{ __html: block.media }}
                 />
               ) : (
-                <div className="flex aspect-video w-full items-center justify-center bg-gray-100 text-gray-300">
+                <div className="flex aspect-video w-full items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-300">
                   <ImageOff className="h-5 w-5" />
                 </div>
               )}
-              <span className="truncate px-1.5 py-1 text-[11px] text-gray-700 group-hover:text-primary-600">
+              <span className="truncate px-1.5 py-1 text-[11px] text-gray-700 dark:text-gray-500 group-hover:text-primary-600 dark:group-hover:text-primary-600 group-hover:font-bold">
                 {block.label}
               </span>
             </div>

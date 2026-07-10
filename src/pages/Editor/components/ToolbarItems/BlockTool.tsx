@@ -9,6 +9,7 @@ export default function BlockTool() {
   return (
     <Button
       type="button"
+      variant="outline"
       onClick={() => openDialog(<BlocksPanel />, "Blocks", "max-w-[700px]")}
     >
       <Plus className="h-4 w-4" />
