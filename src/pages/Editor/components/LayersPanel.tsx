@@ -18,7 +18,7 @@ function LayerNode({ node, depth }: LayerNodeProps) {
     <div>
       <div
         className={`group flex items-center gap-1 rounded pr-1 hover:bg-gray-100 ${
-          selectedId === node.id ? "bg-purple-100" : ""
+          selectedId === node.id ? "bg-primary-100" : ""
         }`}
         style={{ paddingLeft: depth * 14 + 4 }}
       >
@@ -40,7 +40,7 @@ function LayerNode({ node, depth }: LayerNodeProps) {
           onClick={() => select(node)}
           className={`flex-1 truncate py-1 text-left text-sm ${
             selectedId === node.id
-              ? "font-medium text-purple-700"
+              ? "font-medium text-primary-700"
               : "text-gray-700"
           } ${node.visible === false ? "opacity-50" : ""}`}
         >

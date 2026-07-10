@@ -80,7 +80,7 @@ export default function Editor() {
 
   return (
     <div className="flex h-screen w-screen flex-col">
-      <ProjectDataPanel />
+      {/* <ProjectDataPanel /> */}
       <ToolBar />
       <SideBar />
       <div className="flex min-h-0 flex-1">

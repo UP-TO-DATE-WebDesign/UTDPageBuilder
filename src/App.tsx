@@ -11,12 +11,12 @@ function App() {
       </h1>
       <button
         type="button"
-        className="rounded-md bg-purple-600 px-4 py-2 font-medium text-white hover:bg-purple-700"
+        className="rounded-md bg-primary-600 px-4 py-2 font-medium text-white hover:bg-primary-700"
         onClick={() => setCount((count) => count + 1)}
       >
         Count is {count}
       </button>
-      <Link to="/editor" className="text-purple-600 underline hover:text-purple-700">
+      <Link to="/editor" className="text-primary-600 underline hover:text-primary-700">
         Open Studio Editor
       </Link>
     </div>

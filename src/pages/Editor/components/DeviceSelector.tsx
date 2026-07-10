@@ -27,7 +27,7 @@ export default function DeviceSelector() {
             title={device.name}
             className={`flex h-8 w-8 items-center justify-center rounded hover:bg-gray-100 ${
               selectedDeviceId === device.id
-                ? "bg-purple-100 text-purple-700"
+                ? "bg-primary-100 text-primary-700"
                 : "text-gray-500"
             }`}
           >
