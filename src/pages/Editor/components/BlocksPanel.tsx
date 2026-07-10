@@ -28,7 +28,7 @@ export default function BlocksPanel() {
 
   return (
     <div className="flex h-[70vh] gap-3">
-      <div className="w-36 shrink-0 overflow-y-auto border-r border-subtle-200 pr-3">
+      <div className="w-36 shrink-0 overflow-y-auto border-r border-gray-200 dark:border-gray-800 pr-3">
         <p className="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-gray-400">
           Categories
         </p>
