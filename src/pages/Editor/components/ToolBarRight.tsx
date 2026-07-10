@@ -14,7 +14,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useRightSidebarStore } from "@/components/rightSidebarStore";
 import StylesPanel from "./StylesPanel";
 import PropertiesPanel from "./PropertiesPanel";
-import { Paintbrush, Settings } from "lucide-react";
+import {
+  Bot,
+  Code,
+  MessagesSquare,
+  Paintbrush,
+  Paperclip,
+  Settings,
+} from "lucide-react";
+import CodeTool from "./ToolbarItems/CodeTool";
+import CommentTool from "./ToolbarItems/CommentTool";
+import AttachmentTool from "./ToolbarItems/AttachmentTool";
+import BotTool from "./ToolbarItems/BotTool";
 
 export default function ToolBar() {
   const open = useRightSidebarStore((state) => state.open);
@@ -27,6 +38,10 @@ export default function ToolBar() {
       <div className="fixed top-1/2 -translate-y-1/2 right-0 z-20 h-auto flex flex-col gap-1 bg-black/60 backdrop-blur-xl rounded-tl-xl rounded-bl-xl py-2 px-1">
         <StyleTool />
         <PropertyTool />
+        <CodeTool />
+        <CommentTool />
+        <AttachmentTool />
+        <BotTool />
       </div>
       <Drawer
         open={open}
@@ -49,6 +64,18 @@ export default function ToolBar() {
                 </TabsTrigger>
                 <TabsTrigger value="properties">
                   <Settings />
+                </TabsTrigger>
+                <TabsTrigger value="code">
+                  <Code />
+                </TabsTrigger>
+                <TabsTrigger value="comments">
+                  <MessagesSquare />
+                </TabsTrigger>
+                <TabsTrigger value="attachments">
+                  <Paperclip />
+                </TabsTrigger>
+                <TabsTrigger value="ai">
+                  <Bot />
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="styles">

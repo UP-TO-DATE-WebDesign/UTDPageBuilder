@@ -1,11 +1,18 @@
 import { create } from "zustand";
 
+type SidebarId =
+  | "styles"
+  | "properties"
+  | "code"
+  | "comments"
+  | "attachments"
+  | "ai";
 interface RightSidebarStoreState {
   open: boolean;
-  activeId: "styles" | "properties" | null;
-  openSidebar: (id: "styles" | "properties") => void;
+  activeId: SidebarId | null;
+  openSidebar: (id: SidebarId) => void;
   closeSidebar: () => void;
-  toggleSidebar: (id: "styles" | "properties") => void;
+  toggleSidebar: (id: SidebarId) => void;
 }
 
 export const useRightSidebarStore = create<RightSidebarStoreState>(
