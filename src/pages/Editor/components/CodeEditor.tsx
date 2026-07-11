@@ -6,6 +6,13 @@ import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import * as monaco from "monaco-editor/esm/vs/editor/editor.api";
 import "monaco-editor/esm/vs/basic-languages/html/html.contribution";
 import "monaco-editor/esm/vs/language/html/monaco.contribution";
+// The HTML monarch grammar embeds <script>/<style> content via
+// nextEmbedded: "text/javascript" / "text/css", which only resolves to real
+// tokenization if a language with that mimetype is registered. These are the
+// lightweight basic-languages tokenizers (no language service/IntelliSense),
+// just enough to colorize the embedded JS/CSS.
+import "monaco-editor/esm/vs/basic-languages/javascript/javascript.contribution";
+import "monaco-editor/esm/vs/basic-languages/css/css.contribution";
 import "@/lib/monacoEnvironment";
 
 export interface CodeEditorHandle {
