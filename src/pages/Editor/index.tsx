@@ -128,7 +128,7 @@ export default function Editor() {
       <div className="flex min-h-0 flex-1">
         <div
           className={`flex h-full flex-1 flex-col transition-all duration-300 ease-in-out ${
-            rightSidebarOpen ? "mr-80" : "mr-0"
+            rightSidebarOpen ? "mr-96" : "mr-0"
           }`}
         >
           <HeaderBar />
