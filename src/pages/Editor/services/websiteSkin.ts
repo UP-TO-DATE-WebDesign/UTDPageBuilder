@@ -1,4 +1,4 @@
-import type { Editor as GrapesEditor } from "grapesjs";
+import type { Editor as GrapesEditor, PropertySelect } from "grapesjs";
 import type {
   RawWebsiteSkinBackgroundKey,
   RawWebsiteSkinContent,
@@ -202,13 +202,50 @@ export function renderWebsiteSkin(
   };
 }
 
+// Registers the skin's fonts as the "font-family" property's option list in
+// the (built-in, grapesjs-core) 'typography' sector, so they show up in the
+// style manager's font picker. Ported from the old project's addFonts(),
+// which did the same via the legacy `.set('list', ...)` API - setOptions()
+// is the current equivalent.
+function registerSkinFonts(editor: GrapesEditor, fontsName: string[]) {
+  if (fontsName.length === 0) return;
+
+  const property = editor.StyleManager.getProperty(
+    "typography",
+    "font-family",
+  ) as PropertySelect | undefined;
+
+  property?.setOptions(
+    fontsName.map((font) => ({
+      id: font,
+      label: font,
+      style: `font-family: ${font}, Helvetica, sans-serif`,
+    })),
+  );
+}
+
 const WEBSITE_SKIN_STYLE_ID = "website-skin-style";
+const WEBSITE_SKIN_FONT_LINK_ID = "website-skin-font-link";
 
 function applyWebsiteSkin(editor: GrapesEditor, skin: RenderedWebsiteSkin) {
-  editor.Canvas.getFrame(0)?.addLink(skin.font);
-
   const doc = editor.Canvas.getDocument();
   if (!doc?.head) return;
+
+  // Frame.addLink()/addScript() only take effect if called before the
+  // frame's first render (they mutate the frame's `head` array in place,
+  // which never fires the `change:head` event FrameView listens for to
+  // re-render the iframe's <head>). Since this runs after the frame has
+  // already loaded, insert directly into the real DOM instead.
+  let linkEl = doc.head.querySelector<HTMLLinkElement>(
+    `#${WEBSITE_SKIN_FONT_LINK_ID}`,
+  );
+  if (!linkEl) {
+    linkEl = doc.createElement("link");
+    linkEl.id = WEBSITE_SKIN_FONT_LINK_ID;
+    linkEl.rel = "stylesheet";
+    doc.head.appendChild(linkEl);
+  }
+  linkEl.href = skin.font;
 
   let styleEl = doc.head.querySelector<HTMLStyleElement>(
     `#${WEBSITE_SKIN_STYLE_ID}`,
@@ -228,6 +265,8 @@ export function loadWebsiteSkin(
   editor: GrapesEditor,
   skin: RenderedWebsiteSkin,
 ) {
+  registerSkinFonts(editor, skin.fontsName);
+
   if (editor.Canvas.getDocument()?.head) {
     applyWebsiteSkin(editor, skin);
   }
