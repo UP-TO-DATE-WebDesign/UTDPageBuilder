@@ -1,5 +1,4 @@
-import { Layers } from "lucide-react";
-import LayersPanel from "../LayersPanel";
+import { Layers, ChevronRight, Eye, EyeOff, Lock, Unlock } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -13,15 +12,103 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useLayersStore, type LayerTreeNode } from "../../stores/layersStore";
+
+interface LayerNodeProps {
+  node: LayerTreeNode;
+  depth: number;
+}
+
+function LayerNode({ node, depth }: LayerNodeProps) {
+  const selectedId = useLayersStore((state) => state.selectedId);
+  const select = useLayersStore((state) => state.select);
+  const toggleOpen = useLayersStore((state) => state.toggleOpen);
+  const toggleVisible = useLayersStore((state) => state.toggleVisible);
+  const toggleLocked = useLayersStore((state) => state.toggleLocked);
+  const hasChildren = node.children.length > 0;
+
+  return (
+    <div>
+      <div
+        className={`group flex items-center gap-1 rounded pr-1 hover:bg-secondary ${
+          selectedId === node.id ? "bg-secondary/50" : ""
+        }`}
+        style={{ paddingLeft: depth * 14 + 4 }}
+      >
+        <button
+          type="button"
+          onClick={() => toggleOpen(node)}
+          className={`flex h-5 w-5 shrink-0 items-center justify-center dark:text-white dark:hover:text-gray-600 ${
+            hasChildren ? "" : "invisible"
+          }`}
+          aria-label={node.open ? "Collapse" : "Expand"}
+        >
+          <ChevronRight
+            className={`h-3.5 w-3.5 transition-transform ${node.open ? "rotate-90" : ""}`}
+          />
+        </button>
+
+        <button
+          type="button"
+          onClick={() => select(node)}
+          className={`flex-1 truncate py-1 text-left text-sm ${
+            selectedId === node.id
+              ? "font-medium dark:text-white"
+              : "dark:text-white"
+          } ${node.visible === false ? "opacity-50" : ""}`}
+        >
+          {node.name}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => toggleVisible(node)}
+          className={`flex h-5 w-5 shrink-0 items-center justify-center text-gray-400 hover:text-gray-600 ${
+            node.visible ? "opacity-0 group-hover:opacity-100" : ""
+          }`}
+          aria-label={node.visible ? "Hide layer" : "Show layer"}
+        >
+          {node.visible ? (
+            <Eye className="h-3.5 w-3.5" />
+          ) : (
+            <EyeOff className="h-3.5 w-3.5" />
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={() => toggleLocked(node)}
+          className={`flex h-5 w-5 shrink-0 items-center justify-center text-gray-400 hover:text-gray-600 ${
+            node.locked ? "" : "opacity-0 group-hover:opacity-100"
+          }`}
+          aria-label={node.locked ? "Unlock layer" : "Lock layer"}
+        >
+          {node.locked ? (
+            <Lock className="h-3.5 w-3.5" />
+          ) : (
+            <Unlock className="h-3.5 w-3.5" />
+          )}
+        </button>
+      </div>
+
+      {node.open &&
+        node.children.map((child) => (
+          <LayerNode key={child.id} node={child} depth={depth + 1} />
+        ))}
+    </div>
+  );
+}
 
 export default function LayerTool() {
+  const tree = useLayersStore((state) => state.tree);
+
   return (
     <div>
       <Sheet>
         <Tooltip>
           <TooltipTrigger
             render={
-              <SheetTrigger className="py-3 px-2 rounded-lg focus:outline-none bg-black/40 hover:bg-black/70 hover:scale-110 transition-all duration-300 text-white" />
+              <SheetTrigger className="py-3 px-2 rounded focus:outline-none bg-black/40 hover:bg-black/70 hover:scale-110 transition-all duration-300 text-white" />
             }
           >
             <Layers className="size-4" />
@@ -34,7 +121,11 @@ export default function LayerTool() {
             <SheetDescription>Manage page layers</SheetDescription>
           </SheetHeader>
           <div className="px-2">
-            <LayersPanel />
+            {tree ? (
+              <LayerNode node={tree} depth={0} />
+            ) : (
+              <p className="px-2 text-sm text-gray-400">Loading…</p>
+            )}
           </div>
         </SheetContent>
       </Sheet>
