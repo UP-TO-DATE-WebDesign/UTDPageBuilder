@@ -83,7 +83,7 @@ export default function CustomCodeTool() {
           </TooltipTrigger>
           <TooltipContent side="right">Custom Code</TooltipContent>
         </Tooltip>
-        <DialogContent className="sm:max-w-[800px]">
+        <DialogContent className="flex h-[85vh] flex-col sm:max-w-[800px] lg:h-[95vh] lg:max-w-[80vw]">
           <DialogHeader>
             <DialogTitle>Site Code</DialogTitle>
             <DialogDescription>
@@ -129,25 +129,27 @@ export default function CustomCodeTool() {
               </Button>
             </div>
           </div>
-          <Suspense
-            fallback={
-              <div className="flex h-100 items-center justify-center rounded-md border">
-                <Spinner className="size-6" />
-              </div>
-            }
-          >
-            <CodeEditor
-              ref={codeEditorRef}
-              docKey={sectionKey}
-              value={code}
-              onChange={(value) =>
-                setDraft((prev) => ({ ...prev, [sectionKey]: value }))
+          <div className="min-h-0 flex-1">
+            <Suspense
+              fallback={
+                <div className="flex h-full items-center justify-center rounded-md border">
+                  <Spinner className="size-6" />
+                </div>
               }
-              language="html"
-              height="400px"
-              className="overflow-hidden rounded-md border"
-            />
-          </Suspense>
+            >
+              <CodeEditor
+                ref={codeEditorRef}
+                docKey={sectionKey}
+                value={code}
+                onChange={(value) =>
+                  setDraft((prev) => ({ ...prev, [sectionKey]: value }))
+                }
+                language="html"
+                height="100%"
+                className="overflow-hidden rounded-md border"
+              />
+            </Suspense>
+          </div>
           <DialogFooter>
             <Button
               variant="outline"
