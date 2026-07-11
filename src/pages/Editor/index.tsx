@@ -10,8 +10,14 @@ import { useUTDBlocksStore } from "../../stores/utdBlocksStore";
 import ToolBar from "./components/ToolBar";
 import AppDialog from "../../components/AppDialog";
 import { useRightSidebarStore } from "../../components/rightSidebarStore";
-import { fetchEditorContent, fetchSite, fetchWebsiteSkin } from "./services/UTDApi";
+import {
+  fetchEditorContent,
+  fetchSite,
+  fetchWebsiteSkin,
+  fetchSiteCode,
+} from "./services/UTDApi";
 import { loadWebsiteSkin, renderWebsiteSkin } from "./services/websiteSkin";
+import { loadSiteCode } from "./services/siteCode";
 import { useUTDPagesStore } from "../../stores/utdPagesStore";
 import HeaderBar from "./components/HeaderBar";
 import ToolBarRight from "./components/ToolBarRight";
@@ -120,6 +126,16 @@ export default function Editor() {
         loadWebsiteSkin(editor, renderWebsiteSkin(skin));
       } catch (err) {
         console.error("Failed to load website skin", err);
+      }
+
+      try {
+        const [siteEntries, pageEntries] = await Promise.all([
+          fetchSiteCode({ siteId }),
+          fetchSiteCode({ siteId, pageId }),
+        ]);
+        loadSiteCode(editor, siteEntries, pageEntries);
+      } catch (err) {
+        console.error("Failed to load site code", err);
       }
     },
     [setEditor, siteId, pageId],
