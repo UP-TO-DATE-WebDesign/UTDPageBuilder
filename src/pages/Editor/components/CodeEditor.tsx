@@ -52,14 +52,14 @@ export interface CodeEditorProps {
 function formatReadOnlySafe(
   instance: monaco.editor.IStandaloneCodeEditor,
   readOnly: boolean,
-) {
+): Promise<void> {
   if (readOnly) instance.updateOptions({ readOnly: false });
-  instance
-    .getAction("editor.action.formatDocument")
-    ?.run()
-    .finally(() => {
-      if (readOnly) instance.updateOptions({ readOnly: true });
-    });
+  return (
+    instance.getAction("editor.action.formatDocument")?.run() ??
+    Promise.resolve()
+  ).finally(() => {
+    if (readOnly) instance.updateOptions({ readOnly: true });
+  });
 }
 
 const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(
@@ -82,6 +82,13 @@ const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(
     const modelsRef = useRef<Map<string, monaco.editor.ITextModel>>(new Map());
     const onChangeRef = useRef(onChange);
     onChangeRef.current = onChange;
+    // model.setValue() and the format-on-load action both fire
+    // onDidChangeModelContent just like a real keystroke would. Callers that
+    // need to tell "the user typed this" apart from "we just replaced this
+    // doc's content programmatically" (e.g. to track an edited-vs-live-follow
+    // state) need onChange to only fire for genuine user edits, so this is
+    // held true for the duration of any programmatic content change.
+    const isExternalUpdateRef = useRef(false);
 
     // Mount the editor widget once. onDidChangeModelContent fires for
     // whichever model is currently attached, so one subscription here
@@ -98,6 +105,7 @@ const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(
       editorRef.current = instance;
 
       const subscription = instance.onDidChangeModelContent(() => {
+        if (isExternalUpdateRef.current) return;
         onChangeRef.current?.(instance.getValue());
       });
 
@@ -129,7 +137,10 @@ const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(
         instance.setModel(model);
       }
       if (formatOnLoad) {
-        formatReadOnlySafe(instance, readOnly);
+        isExternalUpdateRef.current = true;
+        formatReadOnlySafe(instance, readOnly).finally(() => {
+          isExternalUpdateRef.current = false;
+        });
       }
       // Only run when switching docs - value changes for the already-active
       // doc are handled by the effect below, not by recreating the model.
@@ -144,9 +155,14 @@ const CodeEditor = forwardRef<CodeEditorHandle, CodeEditorProps>(
       const instance = editorRef.current;
       const model = modelsRef.current.get(docKey);
       if (model && model.getValue() !== value) {
+        isExternalUpdateRef.current = true;
         model.setValue(value);
         if (formatOnLoad && instance?.getModel() === model) {
-          formatReadOnlySafe(instance, readOnly);
+          formatReadOnlySafe(instance, readOnly).finally(() => {
+            isExternalUpdateRef.current = false;
+          });
+        } else {
+          isExternalUpdateRef.current = false;
         }
       }
     }, [docKey, value, formatOnLoad]);
