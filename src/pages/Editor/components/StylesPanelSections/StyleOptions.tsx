@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { ChevronsUpDown, Eye, EyeOff } from "lucide-react";
+import { HexColorInput, HexColorPicker } from "react-colorful";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -18,6 +21,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function StyleOptions() {
+  const [color, setColor] = useState("#000000");
+
   return (
     <div className="flex flex-col gap-4 my-4 px-2">
       <h4 className="text-xs uppercase text-primary-500">Style Options</h4>
@@ -91,20 +96,31 @@ export default function StyleOptions() {
         <Field>
           <FieldLabel htmlFor="input-color">Color</FieldLabel>
           <InputGroup>
-            <InputGroupInput
+            <HexColorInput
               id="input-color"
-              type="text"
+              data-slot="input-group-control"
+              color={color}
+              onChange={setColor}
+              prefixed
               placeholder="Select color"
+              className={cn(
+                "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30",
+                "flex-1 rounded-none border-0 bg-transparent shadow-none ring-0 focus-visible:ring-0 dark:bg-transparent",
+              )}
             />
             <InputGroupAddon align="inline-end">
-              px
               <DropdownMenu>
                 <DropdownMenuTrigger
                   render={<InputGroupButton variant="ghost" />}
                 >
-                  <div className="w-4 h-4 border rounded"></div>
+                  <div
+                    className="h-4 w-4 rounded border"
+                    style={{ backgroundColor: color }}
+                  />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>Color picker here</DropdownMenuContent>
+                <DropdownMenuContent className="w-auto p-3">
+                  <HexColorPicker color={color} onChange={setColor} />
+                </DropdownMenuContent>
               </DropdownMenu>
             </InputGroupAddon>
           </InputGroup>
