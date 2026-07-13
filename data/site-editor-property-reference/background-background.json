@@ -1,0 +1,121 @@
+{
+  "sector": "Background",
+  "id": "background",
+  "label": "Background",
+  "type": "stack",
+  "properties": [
+    {
+      "id": "background-image",
+      "label": "Image",
+      "type": "file"
+    },
+    {
+      "id": "background-repeat",
+      "label": "Repeat",
+      "type": "select",
+      "default": "repeat",
+      "options": [
+        {
+          "id": "repeat",
+          "label": "repeat"
+        },
+        {
+          "id": "repeat-x",
+          "label": "repeat-x"
+        },
+        {
+          "id": "repeat-y",
+          "label": "repeat-y"
+        },
+        {
+          "id": "no-repeat",
+          "label": "no-repeat"
+        }
+      ]
+    },
+    {
+      "id": "background-position",
+      "label": "Position",
+      "type": "select",
+      "default": "left top",
+      "options": [
+        {
+          "id": "left top",
+          "label": "left top"
+        },
+        {
+          "id": "left center",
+          "label": "left center"
+        },
+        {
+          "id": "left bottom",
+          "label": "left bottom"
+        },
+        {
+          "id": "right top",
+          "label": "right top"
+        },
+        {
+          "id": "right center",
+          "label": "right center"
+        },
+        {
+          "id": "right bottom",
+          "label": "right bottom"
+        },
+        {
+          "id": "center top",
+          "label": "center top"
+        },
+        {
+          "id": "center center",
+          "label": "center center"
+        },
+        {
+          "id": "center bottom",
+          "label": "center bottom"
+        }
+      ]
+    },
+    {
+      "id": "background-attachment",
+      "label": "Attachment",
+      "type": "select",
+      "default": "scroll",
+      "options": [
+        {
+          "id": "scroll",
+          "label": "scroll"
+        },
+        {
+          "id": "fixed",
+          "label": "fixed"
+        },
+        {
+          "id": "local",
+          "label": "local"
+        }
+      ]
+    },
+    {
+      "id": "background-size",
+      "label": "Size",
+      "type": "select",
+      "default": "auto",
+      "options": [
+        {
+          "id": "auto",
+          "label": "auto"
+        },
+        {
+          "id": "cover",
+          "label": "cover"
+        },
+        {
+          "id": "contain",
+          "label": "contain"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "sector": "Typography",
+  "id": "overflow-wrap",
+  "label": "Overflow Wrap",
+  "type": "radio",
+  "default": "normal",
+  "options": [
+    {
+      "id": "break-word",
+      "label": "Yes"
+    },
+    {
+      "id": "unset",
+      "label": "No"
+    }
+  ]
+}

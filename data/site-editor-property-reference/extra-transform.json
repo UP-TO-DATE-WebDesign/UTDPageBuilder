@@ -1,0 +1,42 @@
+{
+  "sector": "Extra",
+  "id": "transform",
+  "properties": [
+    {
+      "id": "transform-rotate-x",
+      "label": "Rotate X"
+    },
+    {
+      "id": "transform-rotate-y",
+      "label": "Rotate Y"
+    },
+    {
+      "id": "transform-rotate-z",
+      "label": "Rotate Z"
+    },
+    {
+      "id": "transform-scale-x",
+      "label": "Scale X"
+    },
+    {
+      "id": "transform-scale-y",
+      "label": "Scale Y"
+    },
+    {
+      "id": "transform-scale-z",
+      "label": "Scale Z"
+    },
+    {
+      "id": "transform-translate-x",
+      "label": "Translate X"
+    },
+    {
+      "id": "transform-translate-y",
+      "label": "Translate Y"
+    },
+    {
+      "id": "transform-translate-z",
+      "label": "Translate Z"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "sector": "Layout",
+  "id": "padding",
+  "label": "Padding",
+  "type": "composite",
+  "properties": [
+    {
+      "id": "padding-top",
+      "label": "Top",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%",
+        "vh"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "padding-right",
+      "label": "Right",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%",
+        "vw"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "padding-bottom",
+      "label": "Bottom",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%",
+        "vh"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "padding-left",
+      "label": "Left",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%",
+        "vw"
+      ],
+      "min": 0,
+      "step": 1
+    }
+  ]
+}

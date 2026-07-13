@@ -1,0 +1,17 @@
+{
+  "sector": "Typography",
+  "id": "font-style",
+  "label": "Font Style",
+  "type": "radio",
+  "default": "normal",
+  "options": [
+    {
+      "id": "normal",
+      "label": "Normal"
+    },
+    {
+      "id": "italic",
+      "label": "Italic"
+    }
+  ]
+}

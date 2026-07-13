@@ -1,0 +1,137 @@
+{
+  "sector": "Extra",
+  "id": "cursor",
+  "label": "Cursor",
+  "type": "select",
+  "default": "auto",
+  "options": [
+    {
+      "id": "auto",
+      "label": "Auto"
+    },
+    {
+      "id": "default",
+      "label": "Default"
+    },
+    {
+      "id": "none",
+      "label": "None"
+    },
+    {
+      "id": "alias",
+      "label": "Alias"
+    },
+    {
+      "id": "col-resize",
+      "label": "Column resize"
+    },
+    {
+      "id": "row-resize",
+      "label": "Row resize"
+    },
+    {
+      "id": "context-menu",
+      "label": "Context menu"
+    },
+    {
+      "id": "copy",
+      "label": "Copy"
+    },
+    {
+      "id": "crosshair",
+      "label": "Crosshair"
+    },
+    {
+      "id": "n-resize",
+      "label": "Resize N"
+    },
+    {
+      "id": "ne-resize",
+      "label": "Resize NE"
+    },
+    {
+      "id": "e-resize",
+      "label": "Resize E"
+    },
+    {
+      "id": "se-resize",
+      "label": "Resize SE"
+    },
+    {
+      "id": "s-resize",
+      "label": "Resize S"
+    },
+    {
+      "id": "sw-resize",
+      "label": "Resize SW"
+    },
+    {
+      "id": "w-resize",
+      "label": "Resize W"
+    },
+    {
+      "id": "nw-resize",
+      "label": "Resize NW"
+    },
+    {
+      "id": "ns-resize",
+      "label": "Resize NS"
+    },
+    {
+      "id": "nesw-resize",
+      "label": "Resize NESW"
+    },
+    {
+      "id": "ew-resize",
+      "label": "Resize EW"
+    },
+    {
+      "id": "nwse-resize",
+      "label": "Resize NWSE"
+    },
+    {
+      "id": "grab",
+      "label": "Grab"
+    },
+    {
+      "id": "grabbing",
+      "label": "Grabbing"
+    },
+    {
+      "id": "help",
+      "label": "Help"
+    },
+    {
+      "id": "move",
+      "label": "Move"
+    },
+    {
+      "id": "not-allowed",
+      "label": "Not allowed"
+    },
+    {
+      "id": "pointer",
+      "label": "Pointer"
+    },
+    {
+      "id": "progress",
+      "label": "Progress"
+    },
+    {
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "id": "vertical-text",
+      "label": "Vertical text"
+    },
+    {
+      "id": "zoom-in",
+      "label": "Zoom in"
+    },
+    {
+      "id": "zoom-out",
+      "label": "Zoom out"
+    }
+  ]
+}

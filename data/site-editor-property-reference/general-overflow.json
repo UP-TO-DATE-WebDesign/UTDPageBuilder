@@ -1,0 +1,17 @@
+{
+  "sector": "General",
+  "id": "overflow",
+  "label": "Overflow",
+  "type": "radio",
+  "default": "normal",
+  "options": [
+    {
+      "id": "hidden",
+      "label": "hidden"
+    },
+    {
+      "id": "unset",
+      "label": "unset"
+    }
+  ]
+}

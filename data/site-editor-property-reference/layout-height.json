@@ -1,0 +1,17 @@
+{
+  "sector": "Layout",
+  "id": "height",
+  "label": "Height",
+  "type": "integer",
+  "default": "auto",
+  "units": [
+    "em",
+    "rem",
+    "px",
+    "%",
+    "vw",
+    "vh"
+  ],
+  "min": 0,
+  "step": 1
+}

@@ -5,6 +5,7 @@ import type { CreateEditorOptions } from "@grapesjs/studio-sdk";
 import type { Editor as GrapesEditor } from "grapesjs";
 import { useEditorStore } from "./stores/editorStore";
 import { globalPageSettings } from "./siteSettings";
+import { styleManagerSectors } from "./services/siteEditorPropertyReference";
 import { useUTDBlocksStore } from "../../stores/utdBlocksStore";
 
 import ToolBar from "./components/ToolBar";
@@ -50,6 +51,20 @@ export default function Editor() {
           // toolbar row; ToolBar/ToolBarRight cover those actions instead.
           { type: "canvas" },
         ],
+      },
+    },
+    // Studio SDK never renders GrapesJS's own Style Manager panel UI here
+    // (there's no sidebarLeft/sidebarRight style-manager entry in `layout`
+    // above) - this only seeds editor.StyleManager's data layer, which
+    // stylesStore.ts and the custom StyleSettingInputFields/*Input
+    // components read from directly. See
+    // src/pages/Editor/services/siteEditorPropertyReference.ts and
+    // data/site-editor-property-reference/ for provenance. Properties not
+    // covered here (e.g. "float", "visibility") still fall back to
+    // stylesStore's ensureProperty, which registers them on demand.
+    gjsOptions: {
+      styleManager: {
+        sectors: styleManagerSectors,
       },
     },
     // identity: {

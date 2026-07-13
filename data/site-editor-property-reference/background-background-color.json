@@ -1,0 +1,7 @@
+{
+  "sector": "Background",
+  "id": "background-color",
+  "label": "Fill Color",
+  "type": "color",
+  "default": "none"
+}

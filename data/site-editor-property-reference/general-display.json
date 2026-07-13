@@ -1,0 +1,17 @@
+{
+  "sector": "General",
+  "id": "display",
+  "label": "Visibility",
+  "type": "radio",
+  "default": "inherit",
+  "options": [
+    {
+      "id": "inherit",
+      "label": "Visible"
+    },
+    {
+      "id": "none",
+      "label": "Hidden"
+    }
+  ]
+}

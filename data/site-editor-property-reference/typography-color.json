@@ -1,0 +1,7 @@
+{
+  "sector": "Typography",
+  "id": "color",
+  "label": "Font color",
+  "type": "color",
+  "default": "black"
+}

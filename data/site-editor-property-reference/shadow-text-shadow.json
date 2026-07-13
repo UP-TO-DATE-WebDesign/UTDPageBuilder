@@ -1,0 +1,55 @@
+{
+  "sector": "Shadow",
+  "id": "text-shadow",
+  "label": "Text Shadow",
+  "type": "stack",
+  "default": "none",
+  "properties": [
+    {
+      "id": "text-shadow-h",
+      "label": "Offset X",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "step": 1
+    },
+    {
+      "id": "text-shadow-v",
+      "label": "Offset Y",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "step": 1
+    },
+    {
+      "id": "text-shadow-blur",
+      "label": "Blur",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "text-shadow-color",
+      "label": "Fill Color",
+      "type": "color",
+      "default": "black"
+    }
+  ]
+}

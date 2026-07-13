@@ -1,0 +1,25 @@
+{
+  "sector": "Typography",
+  "id": "text-transform",
+  "label": "Text Transform",
+  "type": "select",
+  "default": "none",
+  "options": [
+    {
+      "id": "none",
+      "label": "None"
+    },
+    {
+      "id": "capitalize",
+      "label": "Capitalize"
+    },
+    {
+      "id": "uppercase",
+      "label": "Uppercase"
+    },
+    {
+      "id": "lowercase",
+      "label": "Lowercase"
+    }
+  ]
+}

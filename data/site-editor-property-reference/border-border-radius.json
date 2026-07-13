@@ -1,0 +1,64 @@
+{
+  "sector": "Border",
+  "id": "border-radius",
+  "label": "Border Radius",
+  "type": "composite",
+  "properties": [
+    {
+      "id": "border-top-left-radius",
+      "label": "Top",
+      "type": "integer",
+      "default": "0px",
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "border-top-right-radius",
+      "label": "Right",
+      "type": "integer",
+      "default": "0px",
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "border-bottom-right-radius",
+      "label": "Left",
+      "type": "integer",
+      "default": "0px",
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "border-bottom-left-radius",
+      "label": "Bottom",
+      "type": "integer",
+      "default": "0px",
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "min": 0,
+      "step": 1
+    }
+  ]
+}

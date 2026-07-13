@@ -1,0 +1,17 @@
+{
+  "sector": "Layout",
+  "id": "flex",
+  "label": "Behaviour",
+  "type": "radio",
+  "default": "1 1 100%",
+  "options": [
+    {
+      "id": "1 1 100%",
+      "label": "Fill parent"
+    },
+    {
+      "id": "0 1 auto",
+      "label": "Fit content"
+    }
+  ]
+}

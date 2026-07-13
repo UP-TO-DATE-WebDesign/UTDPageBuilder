@@ -1,0 +1,17 @@
+{
+  "sector": "Layout",
+  "id": "flex-wrap",
+  "label": "Allow multiline",
+  "type": "radio",
+  "default": "nowrap",
+  "options": [
+    {
+      "id": "nowrap",
+      "label": "No"
+    },
+    {
+      "id": "wrap",
+      "label": "Yes"
+    }
+  ]
+}

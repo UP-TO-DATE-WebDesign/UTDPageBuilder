@@ -1,0 +1,95 @@
+{
+  "sector": "Extra",
+  "id": "transition",
+  "label": "Transition",
+  "type": "stack",
+  "properties": [
+    {
+      "id": "transition-property",
+      "label": "Property",
+      "type": "select",
+      "default": "width",
+      "options": [
+        {
+          "id": "all",
+          "label": "All"
+        },
+        {
+          "id": "width",
+          "label": "Width"
+        },
+        {
+          "id": "height",
+          "label": "Height"
+        },
+        {
+          "id": "background-color",
+          "label": "Background color"
+        },
+        {
+          "id": "transform",
+          "label": "Transform"
+        },
+        {
+          "id": "border",
+          "label": "Border"
+        },
+        {
+          "id": "box-shadow",
+          "label": "Box shadow"
+        },
+        {
+          "id": "text-shadow",
+          "label": "Text shadow"
+        },
+        {
+          "id": "opacity",
+          "label": "Opacity"
+        },
+        {
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    },
+    {
+      "id": "transition-duration",
+      "label": "Duration",
+      "type": "integer",
+      "default": "2",
+      "units": [
+        "s"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "transition-timing-function",
+      "label": "Easing",
+      "type": "select",
+      "default": "ease",
+      "options": [
+        {
+          "id": "linear",
+          "label": "linear"
+        },
+        {
+          "id": "ease",
+          "label": "ease"
+        },
+        {
+          "id": "ease-in",
+          "label": "ease-in"
+        },
+        {
+          "id": "ease-out",
+          "label": "ease-out"
+        },
+        {
+          "id": "ease-in-out",
+          "label": "ease-in-out"
+        }
+      ]
+    }
+  ]
+}

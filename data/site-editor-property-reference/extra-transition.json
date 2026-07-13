@@ -1,0 +1,60 @@
+{
+  "sector": "Extra",
+  "id": "transition",
+  "properties": [
+    {
+      "id": "transition-property",
+      "label": "Property",
+      "options": [
+        {
+          "id": "all",
+          "label": "All"
+        },
+        {
+          "id": "width",
+          "label": "Width"
+        },
+        {
+          "id": "height",
+          "label": "Height"
+        },
+        {
+          "id": "background-color",
+          "label": "Background color"
+        },
+        {
+          "id": "transform",
+          "label": "Transform"
+        },
+        {
+          "id": "border",
+          "label": "Border"
+        },
+        {
+          "id": "box-shadow",
+          "label": "Box shadow"
+        },
+        {
+          "id": "text-shadow",
+          "label": "Text shadow"
+        },
+        {
+          "id": "opacity",
+          "label": "Opacity"
+        },
+        {
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    },
+    {
+      "id": "transition-duration",
+      "label": "Duration"
+    },
+    {
+      "id": "transition-timing-function",
+      "label": "Easing"
+    }
+  ]
+}

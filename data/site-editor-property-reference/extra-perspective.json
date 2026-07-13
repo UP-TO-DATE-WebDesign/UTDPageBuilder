@@ -1,0 +1,13 @@
+{
+  "sector": "Extra",
+  "id": "perspective",
+  "type": "integer",
+  "default": 0,
+  "units": [
+    "px",
+    "%",
+    "em",
+    "rem"
+  ],
+  "min": 0
+}

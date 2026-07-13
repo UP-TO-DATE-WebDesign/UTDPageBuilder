@@ -1,0 +1,29 @@
+{
+  "sector": "Flex",
+  "id": "align-self",
+  "label": "Align",
+  "type": "radio",
+  "default": "auto",
+  "options": [
+    {
+      "id": "auto",
+      "label": "Auto"
+    },
+    {
+      "id": "flex-start",
+      "label": "Start"
+    },
+    {
+      "id": "flex-end",
+      "label": "End"
+    },
+    {
+      "id": "stretch",
+      "label": "Stretch"
+    },
+    {
+      "id": "center",
+      "label": "Center"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "sector": "Typography",
+  "id": "font-family",
+  "label": "Font",
+  "type": "select",
+  "default": "Arial, Helvetica, sans-serif",
+  "options": [
+    {
+      "id": "Arial, Helvetica, sans-serif",
+      "label": "Arial"
+    },
+    {
+      "id": "Arial Black, Gadget, sans-serif",
+      "label": "Arial Black"
+    },
+    {
+      "id": "Brush Script MT, sans-serif",
+      "label": "Brush Script MT"
+    },
+    {
+      "id": "Comic Sans MS, cursive, sans-serif",
+      "label": "Comic Sans MS"
+    },
+    {
+      "id": "Courier New, Courier, monospace",
+      "label": "Courier New"
+    },
+    {
+      "id": "Georgia, serif",
+      "label": "Georgia"
+    },
+    {
+      "id": "Helvetica, serif",
+      "label": "Helvetica"
+    },
+    {
+      "id": "Impact, Charcoal, sans-serif",
+      "label": "Impact"
+    },
+    {
+      "id": "Lucida Sans Unicode, Lucida Grande, sans-serif",
+      "label": "Lucida Sans Unicode"
+    },
+    {
+      "id": "Tahoma, Geneva, sans-serif",
+      "label": "Tahoma"
+    },
+    {
+      "id": "Times New Roman, Times, serif",
+      "label": "Times New Roman"
+    },
+    {
+      "id": "Trebuchet MS, Helvetica, sans-serif",
+      "label": "Trebuchet MS"
+    },
+    {
+      "id": "Verdana, Geneva, sans-serif",
+      "label": "Verdana"
+    }
+  ]
+}

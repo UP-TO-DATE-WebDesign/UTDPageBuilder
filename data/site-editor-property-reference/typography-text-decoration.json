@@ -1,0 +1,21 @@
+{
+  "sector": "Typography",
+  "id": "text-decoration",
+  "label": "Text Decoration",
+  "type": "radio",
+  "default": "none",
+  "options": [
+    {
+      "id": "none",
+      "label": "None"
+    },
+    {
+      "id": "underline",
+      "label": "underline"
+    },
+    {
+      "id": "line-through",
+      "label": "Line-through"
+    }
+  ]
+}

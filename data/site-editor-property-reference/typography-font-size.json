@@ -1,0 +1,15 @@
+{
+  "sector": "Typography",
+  "id": "font-size",
+  "label": "Font Size",
+  "type": "integer",
+  "default": "medium",
+  "units": [
+    "px",
+    "em",
+    "rem",
+    "%"
+  ],
+  "min": 0,
+  "step": 1
+}

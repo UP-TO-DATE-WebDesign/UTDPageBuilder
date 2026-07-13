@@ -1,0 +1,14 @@
+{
+  "sector": "Typography",
+  "id": "line-height",
+  "label": "Line Height",
+  "type": "integer",
+  "default": "normal",
+  "units": [
+    "px",
+    "em",
+    "rem",
+    "%"
+  ],
+  "step": 1
+}

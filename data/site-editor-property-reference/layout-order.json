@@ -1,0 +1,8 @@
+{
+  "sector": "Layout",
+  "id": "order",
+  "label": "Order",
+  "type": "integer",
+  "default": 1,
+  "step": 1
+}

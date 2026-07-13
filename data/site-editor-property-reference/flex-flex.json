@@ -1,0 +1,33 @@
+{
+  "sector": "Flex",
+  "id": "flex",
+  "label": "Flex",
+  "type": "composite",
+  "properties": [
+    {
+      "id": "flex-grow",
+      "label": "Grow",
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    {
+      "id": "flex-shrink",
+      "label": "Shrink",
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    {
+      "id": "flex-basis",
+      "label": "Basis",
+      "type": "integer",
+      "default": "auto",
+      "units": [
+        "px",
+        "%",
+        ""
+      ]
+    }
+  ]
+}

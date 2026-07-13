@@ -1,0 +1,14 @@
+{
+  "sector": "Typography",
+  "id": "letter-spacing",
+  "label": "Letter Spacing",
+  "type": "integer",
+  "default": "normal",
+  "units": [
+    "px",
+    "em",
+    "rem",
+    "%"
+  ],
+  "step": 1
+}

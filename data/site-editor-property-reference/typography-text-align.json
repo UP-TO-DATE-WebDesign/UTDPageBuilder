@@ -1,0 +1,25 @@
+{
+  "sector": "Typography",
+  "id": "text-align",
+  "label": "Text Align",
+  "type": "radio",
+  "default": "left",
+  "options": [
+    {
+      "id": "left",
+      "label": "Left"
+    },
+    {
+      "id": "center",
+      "label": "Center"
+    },
+    {
+      "id": "right",
+      "label": "Right"
+    },
+    {
+      "id": "justify",
+      "label": "Justify"
+    }
+  ]
+}

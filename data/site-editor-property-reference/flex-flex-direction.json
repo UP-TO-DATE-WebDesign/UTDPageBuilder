@@ -1,0 +1,25 @@
+{
+  "sector": "Flex",
+  "id": "flex-direction",
+  "label": "Direction",
+  "type": "radio",
+  "default": "row",
+  "options": [
+    {
+      "id": "row",
+      "label": "Row"
+    },
+    {
+      "id": "row-reverse",
+      "label": "Row reverse"
+    },
+    {
+      "id": "column",
+      "label": "Column"
+    },
+    {
+      "id": "column-reverse",
+      "label": "Column reverse"
+    }
+  ]
+}

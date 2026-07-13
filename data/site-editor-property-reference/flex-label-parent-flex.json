@@ -1,0 +1,6 @@
+{
+  "sector": "Flex",
+  "id": "label-parent-flex",
+  "label": "Flex Children",
+  "type": "integer"
+}

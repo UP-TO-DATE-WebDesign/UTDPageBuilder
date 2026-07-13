@@ -1,0 +1,64 @@
+{
+  "sector": "Extra",
+  "id": "filter",
+  "label": "Filter",
+  "type": "filter",
+  "properties": [
+    {
+      "id": "filter_type",
+      "label": "Type",
+      "type": "select",
+      "default": "sepia",
+      "options": [
+        {
+          "id": "blur",
+          "label": "blur"
+        },
+        {
+          "id": "brightness",
+          "label": "brightness"
+        },
+        {
+          "id": "contrast",
+          "label": "contrast"
+        },
+        {
+          "id": "grayscale",
+          "label": "grayscale"
+        },
+        {
+          "id": "hue-rotate",
+          "label": "hue-rotate"
+        },
+        {
+          "id": "invert",
+          "label": "invert"
+        },
+        {
+          "id": "opacity",
+          "label": "opacity"
+        },
+        {
+          "id": "saturate",
+          "label": "saturate"
+        },
+        {
+          "id": "sepia",
+          "label": "sepia"
+        }
+      ]
+    },
+    {
+      "id": "filter_strength",
+      "label": "Strength",
+      "type": "slider",
+      "default": 100,
+      "units": [
+        "px"
+      ],
+      "min": 0,
+      "max": 100,
+      "step": 1
+    }
+  ]
+}

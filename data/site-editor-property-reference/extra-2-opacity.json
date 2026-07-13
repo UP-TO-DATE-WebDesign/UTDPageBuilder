@@ -1,0 +1,10 @@
+{
+  "sector": "Extra",
+  "id": "opacity",
+  "label": "Opacity",
+  "type": "slider",
+  "default": 1,
+  "min": 0,
+  "max": 1,
+  "step": 0.01
+}

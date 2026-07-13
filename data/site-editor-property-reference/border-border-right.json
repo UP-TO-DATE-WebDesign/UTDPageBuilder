@@ -1,0 +1,66 @@
+{
+  "sector": "Border",
+  "id": "border-right",
+  "label": "Border right",
+  "type": "composite",
+  "properties": [
+    {
+      "id": "border-right-width",
+      "label": "Width",
+      "type": "integer",
+      "units": [
+        "px",
+        "em",
+        "rem"
+      ]
+    },
+    {
+      "id": "border-right-style",
+      "label": "Style",
+      "type": "select",
+      "options": [
+        {
+          "id": "none",
+          "label": "none"
+        },
+        {
+          "id": "solid",
+          "label": "solid"
+        },
+        {
+          "id": "dotted",
+          "label": "dotted"
+        },
+        {
+          "id": "dashed",
+          "label": "dashed"
+        },
+        {
+          "id": "double",
+          "label": "double"
+        },
+        {
+          "id": "groove",
+          "label": "groove"
+        },
+        {
+          "id": "ridge",
+          "label": "ridge"
+        },
+        {
+          "id": "inset",
+          "label": "inset"
+        },
+        {
+          "id": "outset",
+          "label": "outset"
+        }
+      ]
+    },
+    {
+      "id": "border-right-color",
+      "label": "Color",
+      "type": "color"
+    }
+  ]
+}

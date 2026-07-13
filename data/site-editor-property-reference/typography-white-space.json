@@ -1,0 +1,17 @@
+{
+  "sector": "Typography",
+  "id": "white-space",
+  "label": "Line breaking",
+  "type": "radio",
+  "default": "normal",
+  "options": [
+    {
+      "id": "normal",
+      "label": "Yes"
+    },
+    {
+      "id": "nowrap",
+      "label": "No"
+    }
+  ]
+}

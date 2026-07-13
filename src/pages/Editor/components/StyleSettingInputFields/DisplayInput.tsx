@@ -7,23 +7,14 @@ import { ButtonGroup } from "@/components/ui/button-group";
 export default function DisplayInput() {
   const sectors = useStylesStore((state) => state.sectors);
   const setPropertyValue = useStylesStore((state) => state.setPropertyValue);
-  const ensureProperty = useStylesStore((state) => state.ensureProperty);
+  // "display" is registered up front by the wired style manager reference
+  // data (see data/site-editor-property-reference/) - no ensureProperty
+  // fallback needed here, unlike "float"/"visibility", which aren't in that
+  // data and still rely on it.
   const display = findProperty(sectors, ["display"]);
 
   const setDisplay = (value: string) => {
-    if (!display) {
-      ensureProperty({
-        id: "display",
-        label: "Display",
-        default: "block",
-        options: [
-          { id: "block", label: "Block" },
-          { id: "none", label: "None" },
-        ],
-      });
-    }
-    const fresh = findProperty(useStylesStore.getState().sectors, ["display"]);
-    if (fresh) setPropertyValue(fresh.sectorId, fresh.property.id, value);
+    if (display) setPropertyValue(display.sectorId, display.property.id, value);
   };
 
   return (

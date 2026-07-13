@@ -61,14 +61,24 @@ interface StylesStoreState {
   ensureProperty: (definition: EnsurePropertyDefinition) => void;
 }
 
+// grapesjs's own style manager registers both "number" and "integer" typed
+// properties as the same PropertyNumber class (see its Properties.types
+// config: both map to `model: PropertyNumber`) - but getType() returns
+// whichever literal string the property was created with, never normalized
+// to one or the other. The reference data (data/site-editor-property-
+// reference/) uses "integer" (ported from the old project's GrapesJS 0.16
+// config), so both need to be treated as number-typed here.
+function isNumberPropertyType(type: string): boolean {
+  return type === "number" || type === "integer";
+}
+
 function buildPropertyInfo(property: Property): StylePropertyInfo {
-  // "number" properties (width, height, ...) store the unit separately from
-  // the value - getValue() returns just the bare number, so the unit has to
-  // be read via getFullValue() (e.g. "100px") or it's lost entirely.
-  const value =
-    property.getType() === "number"
-      ? (property as PropertyNumber).getFullValue()
-      : property.getValue();
+  // Number-typed properties (width, height, ...) store the unit separately
+  // from the value - getValue() returns just the bare number, so the unit
+  // has to be read via getFullValue() (e.g. "100px") or it's lost entirely.
+  const value = isNumberPropertyType(property.getType())
+    ? (property as PropertyNumber).getFullValue()
+    : property.getValue();
 
   const info: StylePropertyInfo = {
     id: property.getId(),
@@ -191,11 +201,14 @@ export const useStylesStore = create<StylesStoreState>((set, get) => ({
     const { editor, sectors } = get();
     if (!editor) return;
 
+    // id-only match, not label - see findProperty.ts's comment for why:
+    // label is decorative UI text the reference data reuses across
+    // unrelated properties (e.g. "display" is labeled "Visibility" in one
+    // sector), so matching on it here would wrongly treat a genuinely
+    // missing property (e.g. "visibility") as already registered.
     const id = definition.id.toLowerCase();
     const alreadyExists = sectors.some((sector) =>
-      sector.properties.some(
-        (p) => p.id.toLowerCase() === id || p.label.toLowerCase() === id,
-      ),
+      sector.properties.some((p) => p.id.toLowerCase() === id),
     );
     if (alreadyExists) return;
 

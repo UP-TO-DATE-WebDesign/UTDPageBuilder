@@ -1,0 +1,76 @@
+{
+  "sector": "Shadow",
+  "id": "box-shadow",
+  "label": "Box Shadow",
+  "type": "stack",
+  "properties": [
+    {
+      "id": "box-shadow-h",
+      "label": "Offset X",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "step": 1
+    },
+    {
+      "id": "box-shadow-v",
+      "label": "Offset Y",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "em",
+        "rem",
+        "px",
+        "%"
+      ],
+      "step": 1
+    },
+    {
+      "id": "box-shadow-blur",
+      "label": "Blur",
+      "type": "integer",
+      "default": "5px",
+      "units": [
+        "px"
+      ],
+      "min": 0,
+      "step": 1
+    },
+    {
+      "id": "box-shadow-spread",
+      "label": "Spread",
+      "type": "integer",
+      "default": 0,
+      "units": [
+        "px"
+      ],
+      "step": 1
+    },
+    {
+      "id": "box-shadow-color",
+      "label": "Fill Color",
+      "type": "color",
+      "default": "black"
+    },
+    {
+      "id": "box-shadow-type",
+      "label": "Shadow Type",
+      "type": "select",
+      "options": [
+        {
+          "id": "",
+          "label": "Outside"
+        },
+        {
+          "id": "inset",
+          "label": "Inside"
+        }
+      ]
+    }
+  ]
+}
