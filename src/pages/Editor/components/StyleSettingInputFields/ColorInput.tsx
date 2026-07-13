@@ -1,10 +1,7 @@
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import { cn } from "@/lib/utils";
-import {
-  useStylesStore,
-  type StyleSectorInfo,
-  type StylePropertyInfo,
-} from "../../stores/stylesStore";
+import { useStylesStore } from "../../stores/stylesStore";
+import { findProperty } from "./findProperty";
 import { Field, FieldLabel } from "@/components/ui/field";
 import {
   InputGroup,
@@ -16,26 +13,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-// The style manager doesn't expose a stable, documented sector layout, so
-// rather than hardcoding a sectorId (which a config change could silently
-// break) this searches every sector's properties for an id/label match -
-// same shape setPropertyValue needs (sectorId + propertyId) either way.
-function findProperty(
-  sectors: StyleSectorInfo[],
-  candidates: string[],
-): { sectorId: string; property: StylePropertyInfo } | undefined {
-  const wanted = candidates.map((c) => c.toLowerCase());
-  for (const sector of sectors) {
-    const property = sector.properties.find(
-      (p) =>
-        wanted.includes(p.id.toLowerCase()) ||
-        wanted.includes(p.label.toLowerCase()),
-    );
-    if (property) return { sectorId: sector.id, property };
-  }
-  return undefined;
-}
 
 export default function ColorInput() {
   const sectors = useStylesStore((state) => state.sectors);
