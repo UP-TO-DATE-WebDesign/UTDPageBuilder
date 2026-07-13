@@ -115,8 +115,15 @@ export default function Editor() {
       <PageLoader />
       <div className="flex min-h-0 flex-1">
         <div
+          // The drawer is `position: fixed` (an overlay, not part of normal
+          // flow), so it doesn't push this layout on its own - this margin
+          // is what actually reserves space for it. Must track
+          // ToolBarRight.tsx's DrawerContent width overrides 1:1 (mr-96 =
+          // the drawer's default 24rem below sm:, sm:mr-[33.333%] = its
+          // sm:+ override) or the canvas will either get covered by the
+          // drawer or leave a gap next to it.
           className={`flex h-full flex-1 flex-col transition-all duration-300 ease-in-out ${
-            rightSidebarOpen ? "mr-96" : "mr-0"
+            rightSidebarOpen ? "mr-96 sm:mr-[33.333%]" : "mr-0"
           }`}
         >
           <HeaderBar />

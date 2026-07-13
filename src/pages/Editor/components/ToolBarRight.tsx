@@ -50,7 +50,11 @@ export default function ToolBar() {
         disablePointerDismissal
         swipeDirection="right"
       >
-        <DrawerContent>
+        {/* Width overrides here must track index.tsx's canvas margin 1:1 -
+        the drawer is a fixed-position overlay, so that margin is what
+        actually reserves canvas space for it; changing one without the
+        other either leaves a gap or lets the drawer cover the canvas. */}
+        <DrawerContent className="data-[swipe-axis=x]:sm:[--drawer-content-width:33.333%]">
           <div className="p-4 flex-1 min-h-0 overflow-y-auto">
             <Tabs
               value={activeId ?? undefined}
