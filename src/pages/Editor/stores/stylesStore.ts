@@ -3,6 +3,7 @@ import type {
   Editor as GrapesEditor,
   Property,
   PropertyComposite,
+  PropertyNumber,
 } from "grapesjs";
 
 export interface StylePropertyInfo {
@@ -50,10 +51,18 @@ interface StylesStoreState {
 }
 
 function buildPropertyInfo(property: Property): StylePropertyInfo {
+  // "number" properties (width, height, ...) store the unit separately from
+  // the value - getValue() returns just the bare number, so the unit has to
+  // be read via getFullValue() (e.g. "100px") or it's lost entirely.
+  const value =
+    property.getType() === "number"
+      ? (property as PropertyNumber).getFullValue()
+      : property.getValue();
+
   const info: StylePropertyInfo = {
     id: property.getId(),
     label: property.getLabel(),
-    value: String(property.getValue() ?? ""),
+    value: String(value ?? ""),
   };
 
   if (property.getType() === "composite") {

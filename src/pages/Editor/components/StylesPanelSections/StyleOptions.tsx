@@ -1,4 +1,4 @@
-import { ChevronsUpDown, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { HexColorInput, HexColorPicker } from "react-colorful";
 import { cn } from "@/lib/utils";
 import {
@@ -14,15 +14,13 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
-  InputGroupInput,
 } from "@/components/ui/input-group";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import SizeInput from "../StyleSettingInputFields/SizeInput";
 
 // The style manager doesn't expose a stable, documented sector layout, so
 // rather than hardcoding a sectorId (which a config change could silently
@@ -48,8 +46,6 @@ export default function StyleOptions() {
   const sectors = useStylesStore((state) => state.sectors);
   const setPropertyValue = useStylesStore((state) => state.setPropertyValue);
 
-  const width = findProperty(sectors, ["width"]);
-  const height = findProperty(sectors, ["height"]);
   const colorProp = findProperty(sectors, ["color"]);
   const display = findProperty(sectors, ["display", "visibility"]);
 
@@ -92,84 +88,7 @@ export default function StyleOptions() {
             Hidden
           </Button>
         </ButtonGroup>
-        <div className="flex gap-4">
-          <Field>
-            <FieldLabel htmlFor="input-width" className="opacity-50 text-xs">
-              Width
-            </FieldLabel>
-            <InputGroup>
-              <InputGroupInput
-                id="input-width"
-                type="text"
-                placeholder="auto"
-                value={width?.property.value ?? ""}
-                onChange={(e) =>
-                  width &&
-                  setPropertyValue(
-                    width.sectorId,
-                    width.property.id,
-                    e.target.value,
-                  )
-                }
-              />
-              <InputGroupAddon align="inline-end">
-                px
-                <DropdownMenu>
-                  <DropdownMenuTrigger
-                    render={<InputGroupButton variant="secondary" />}
-                  >
-                    <ChevronsUpDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem>px</DropdownMenuItem>
-                      <DropdownMenuItem>%</DropdownMenuItem>
-                      <DropdownMenuItem>vw</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </InputGroupAddon>
-            </InputGroup>
-          </Field>
-          <Field>
-            <FieldLabel htmlFor="input-height" className="opacity-50 text-xs">
-              Height
-            </FieldLabel>
-            <InputGroup>
-              <InputGroupInput
-                id="input-height"
-                type="text"
-                placeholder="auto"
-                value={height?.property.value ?? ""}
-                onChange={(e) =>
-                  height &&
-                  setPropertyValue(
-                    height.sectorId,
-                    height.property.id,
-                    e.target.value,
-                  )
-                }
-              />
-              <InputGroupAddon align="inline-end">
-                px
-                <DropdownMenu>
-                  <DropdownMenuTrigger
-                    render={<InputGroupButton variant="secondary" />}
-                  >
-                    <ChevronsUpDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem>px</DropdownMenuItem>
-                      <DropdownMenuItem>%</DropdownMenuItem>
-                      <DropdownMenuItem>vh</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </InputGroupAddon>
-            </InputGroup>
-          </Field>
-        </div>
+        <SizeInput />
         <Field>
           <FieldLabel htmlFor="input-color" className="opacity-50 text-xs">
             Color
