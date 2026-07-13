@@ -48,6 +48,7 @@ interface StylesStoreState {
   addClass: (name: string) => void;
   removeClass: (id: string) => void;
   setState: (value: string) => void;
+  ensureFloatProperty: () => void;
 }
 
 function buildPropertyInfo(property: Property): StylePropertyInfo {
@@ -167,6 +168,47 @@ export const useStylesStore = create<StylesStoreState>((set, get) => ({
     const { editor } = get();
     if (!editor) return;
     editor.Selectors.setState(value);
+    get().refreshStyles();
+  },
+
+  // "float" isn't in the Studio SDK's default style manager config (unlike
+  // width/height/color/display, which are) - findProperty(sectors,
+  // ["float"]) always comes back undefined, not just while nothing's
+  // selected, since there's no matching Property model to ever find.
+  // Register it once, anchored to whichever sector already has "display" -
+  // a sector we know exists - rather than guessing a sectorId string, which
+  // addProperty silently no-ops against if it doesn't exist.
+  ensureFloatProperty: () => {
+    const { editor, sectors } = get();
+    if (!editor) return;
+
+    const alreadyExists = sectors.some((sector) =>
+      sector.properties.some(
+        (p) => p.id.toLowerCase() === "float" || p.label.toLowerCase() === "float",
+      ),
+    );
+    if (alreadyExists) return;
+
+    const anchorSector = sectors.find((sector) =>
+      sector.properties.some(
+        (p) =>
+          p.id.toLowerCase() === "display" || p.label.toLowerCase() === "display",
+      ),
+    );
+    if (!anchorSector) return;
+
+    editor.StyleManager.addProperty(anchorSector.id, {
+      label: "Float",
+      property: "float",
+      type: "select",
+      default: "none",
+      options: [
+        { id: "none", label: "None" },
+        { id: "left", label: "Left" },
+        { id: "right", label: "Right" },
+      ],
+    });
+
     get().refreshStyles();
   },
 }));

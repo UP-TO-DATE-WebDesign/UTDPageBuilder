@@ -25,6 +25,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import FloatInput from "../StyleSettingInputFields/FloatInput";
 
 export default function General() {
   const [color, setColor] = useState("#000000");
@@ -33,23 +34,7 @@ export default function General() {
     <div className="flex flex-col gap-4 my-8 px-2">
       <h4 className="text-xs uppercase text-primary-500">General</h4>
       <div className="flex flex-col gap-2">
-        {/* Float */}
-        <div className="flex flex-col gap-2">
-          <Label className="opacity-50 text-xs">Float</Label>
-          <ButtonGroup className="w-full">
-            <Button variant="outline" className="flex-1">
-              None
-            </Button>
-            <Button variant="outline" className="flex-1">
-              <AlignStartVertical />
-              Left
-            </Button>
-            <Button variant="outline" className="flex-1">
-              <AlignEndVertical />
-              Right
-            </Button>
-          </ButtonGroup>
-        </div>
+        <FloatInput />
         {/* Visibility */}
         <div className="flex flex-col gap-2">
           <Label className="opacity-50 text-xs">Visibility</Label>
