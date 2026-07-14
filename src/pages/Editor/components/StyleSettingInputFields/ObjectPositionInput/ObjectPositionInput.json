@@ -1,0 +1,14 @@
+{
+  "id": "object-position",
+  "label": "Object Position",
+  "default": "center center",
+  "options": [
+    { "id": "right top", "label": "RT" },
+    { "id": "right bottom", "label": "RB" },
+    { "id": "left top", "label": "LT" },
+    { "id": "left bottom", "label": "LB" },
+    { "id": "center center", "label": "CC" },
+    { "id": "center top", "label": "CT" },
+    { "id": "center bottom", "label": "CB" }
+  ]
+}

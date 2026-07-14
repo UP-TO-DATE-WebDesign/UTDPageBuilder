@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { ButtonGroup } from "@/components/ui/button-group";
 import FloatInput from "../StyleSettingInputFields/FloatInput/FloatInput";
 import DisplayInput from "../StyleSettingInputFields/DisplayInput/DisplayInput";
 import InsetInput from "../StyleSettingInputFields/InsetInput/InsetInput";
@@ -8,6 +5,7 @@ import PositionInput from "../StyleSettingInputFields/PositionInput/PositionInpu
 import LayerOrderInput from "../StyleSettingInputFields/LayerOrderInput/LayerOrderInput";
 import OverflowInput from "../StyleSettingInputFields/OverflowInput/OverflowInput";
 import ImageFitInput from "../StyleSettingInputFields/ImageFitInput/ImageFitInput";
+import ObjectPositionInput from "../StyleSettingInputFields/ObjectPositionInput/ObjectPositionInput";
 
 export default function General() {
   return (
@@ -21,33 +19,7 @@ export default function General() {
         <LayerOrderInput />
         <OverflowInput />
         <ImageFitInput />
-        {/* Object Position */}
-        <div className="flex flex-col gap-2">
-          <Label className="opacity-50 text-xs">Object Position</Label>
-          <ButtonGroup className="w-full">
-            <Button variant="outline" className="flex-1">
-              RT
-            </Button>
-            <Button variant="outline" className="flex-1">
-              RB
-            </Button>
-            <Button variant="outline" className="flex-1">
-              LT
-            </Button>
-            <Button variant="outline" className="flex-1">
-              LB
-            </Button>
-            <Button variant="outline" className="flex-1">
-              CC
-            </Button>
-            <Button variant="outline" className="flex-1">
-              CT
-            </Button>
-            <Button variant="outline" className="flex-1">
-              CB
-            </Button>
-          </ButtonGroup>
-        </div>
+        <ObjectPositionInput />
       </div>
     </div>
   );
