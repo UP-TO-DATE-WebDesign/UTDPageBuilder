@@ -55,15 +55,15 @@ export default function ToolBar() {
         actually reserves canvas space for it; changing one without the
         other either leaves a gap or lets the drawer cover the canvas. */}
         <DrawerContent className="data-[swipe-axis=x]:sm:[--drawer-content-width:33.333%]">
-          <div className="p-4 flex-1 min-h-0 overflow-y-auto">
-            <Tabs
-              value={activeId ?? undefined}
-              onValueChange={(value) =>
-                openSidebar(value as "styles" | "properties")
-              }
-              className="h-full w-full"
-            >
-              <TabsList className="mb-2 w-full border-b border-gray-200 dark:border-gray-800">
+          <Tabs
+            value={activeId ?? undefined}
+            onValueChange={(value) =>
+              openSidebar(value as "styles" | "properties")
+            }
+            className="w-full flex-1 min-h-0"
+          >
+            <DrawerHeader>
+              <TabsList className="w-full border-b border-gray-200 dark:border-gray-800">
                 <TabsTrigger value="styles">
                   <Paintbrush />
                 </TabsTrigger>
@@ -83,17 +83,19 @@ export default function ToolBar() {
                   <Bot />
                 </TabsTrigger>
               </TabsList>
+            </DrawerHeader>
+            <div className="p-4 flex-1 min-h-0 overflow-y-auto">
               <TabsContent value="styles">
                 <StylesPanel />
               </TabsContent>
               <TabsContent value="properties">
                 <PropertiesPanel />
               </TabsContent>
-              <TabsContent value="code" className="min-h-0">
+              <TabsContent value="code" className="h-full">
                 <CodePanel />
               </TabsContent>
-            </Tabs>
-          </div>
+            </div>
+          </Tabs>
           <DrawerFooter>
             <DrawerClose
               render={<Button variant="outline" onClick={closeSidebar} />}
