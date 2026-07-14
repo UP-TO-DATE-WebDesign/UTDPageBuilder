@@ -19,12 +19,19 @@ export default function StylesPanel() {
         Styles
       </h2>
       <Selector />
-      <StyleSection title="Style Options">
+      <StyleSection
+        title="Style Options"
+        description="Control visibility, size, and color for the selected element."
+        open
+      >
         <VisibilityInput />
         <SizeInput />
         <ColorInput />
       </StyleSection>
-      <StyleSection title="General">
+      <StyleSection
+        title="General"
+        description="Layout, positioning, and object-fit behavior for the selected element."
+      >
         <FloatInput />
         <DisplayInput />
         <InsetInput />
