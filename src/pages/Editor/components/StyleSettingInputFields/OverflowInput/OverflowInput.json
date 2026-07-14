@@ -1,0 +1,9 @@
+{
+  "id": "overflow",
+  "label": "Overflow",
+  "default": "unset",
+  "options": [
+    { "id": "hidden", "label": "Hidden" },
+    { "id": "unset", "label": "Unset" }
+  ]
+}
