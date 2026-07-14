@@ -7,6 +7,7 @@ import InsetInput from "../StyleSettingInputFields/InsetInput/InsetInput";
 import PositionInput from "../StyleSettingInputFields/PositionInput/PositionInput";
 import LayerOrderInput from "../StyleSettingInputFields/LayerOrderInput/LayerOrderInput";
 import OverflowInput from "../StyleSettingInputFields/OverflowInput/OverflowInput";
+import ImageFitInput from "../StyleSettingInputFields/ImageFitInput/ImageFitInput";
 
 export default function General() {
   return (
@@ -19,24 +20,7 @@ export default function General() {
         <PositionInput />
         <LayerOrderInput />
         <OverflowInput />
-        {/* Image Fit */}
-        <div className="flex flex-col gap-2">
-          <Label className="opacity-50 text-xs">Image Fit</Label>
-          <ButtonGroup className="w-full">
-            <Button variant="outline" className="flex-1">
-              Contain
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Cover
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Fill
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Scale-down
-            </Button>
-          </ButtonGroup>
-        </div>
+        <ImageFitInput />
         {/* Object Position */}
         <div className="flex flex-col gap-2">
           <Label className="opacity-50 text-xs">Object Position</Label>

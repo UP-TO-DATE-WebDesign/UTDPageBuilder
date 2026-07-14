@@ -1,0 +1,11 @@
+{
+  "id": "object-fit",
+  "label": "Image Fit",
+  "default": "fill",
+  "options": [
+    { "id": "contain", "label": "Contain" },
+    { "id": "cover", "label": "Cover" },
+    { "id": "fill", "label": "Fill" },
+    { "id": "scale-down", "label": "Scale-down" }
+  ]
+}
