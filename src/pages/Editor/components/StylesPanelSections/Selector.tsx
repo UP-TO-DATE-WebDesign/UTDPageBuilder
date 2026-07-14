@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import { X } from "lucide-react";
 import { useStylesStore, type SelectorInfo } from "../../stores/stylesStore";
-import { Input } from "@/components/ui/input";
 import {
   Combobox,
   ComboboxContent,
