@@ -6,6 +6,7 @@ import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import FloatInput from "../StyleSettingInputFields/FloatInput/FloatInput";
 import DisplayInput from "../StyleSettingInputFields/DisplayInput/DisplayInput";
 import InsetInput from "../StyleSettingInputFields/InsetInput/InsetInput";
+import PositionInput from "../StyleSettingInputFields/PositionInput/PositionInput";
 
 export default function General() {
   return (
@@ -15,27 +16,7 @@ export default function General() {
         <FloatInput />
         <DisplayInput />
         <InsetInput />
-        {/* Position */}
-        <div className="flex flex-col gap-2">
-          <Label className="opacity-50 text-xs">Position</Label>
-          <ButtonGroup className="w-full">
-            <Button variant="outline" className="flex-1">
-              Static
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Relative
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Absolute
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Sticky
-            </Button>
-            <Button variant="outline" className="flex-1">
-              Fixed
-            </Button>
-          </ButtonGroup>
-        </div>
+        <PositionInput />
         <Field>
           <FieldLabel htmlFor="input-width" className="opacity-50 text-xs">
             Layer Order (z-index)

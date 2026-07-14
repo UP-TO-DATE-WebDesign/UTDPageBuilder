@@ -1,0 +1,12 @@
+{
+  "id": "position",
+  "label": "Position",
+  "default": "static",
+  "options": [
+    { "id": "static", "label": "Static" },
+    { "id": "relative", "label": "Relative" },
+    { "id": "absolute", "label": "Absolute" },
+    { "id": "sticky", "label": "Sticky" },
+    { "id": "fixed", "label": "Fixed" }
+  ]
+}
