@@ -1,0 +1,26 @@
+[
+  {
+    "id": "min-width",
+    "label": "Min Width",
+    "default": "0",
+    "units": ["px", "%", "vw"]
+  },
+  {
+    "id": "max-width",
+    "label": "Max Width",
+    "default": "none",
+    "units": ["px", "%", "vw"]
+  },
+  {
+    "id": "min-height",
+    "label": "Min Height",
+    "default": "0",
+    "units": ["px", "%", "vh"]
+  },
+  {
+    "id": "max-height",
+    "label": "Max Height",
+    "default": "none",
+    "units": ["px", "%", "vh"]
+  }
+]

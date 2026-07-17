@@ -19,6 +19,7 @@ import FlexGrowInput from "./StyleSettingInputFields/FlexGrowInput/FlexGrowInput
 import FlexShrinkInput from "./StyleSettingInputFields/FlexShrinkInput/FlexShrinkInput";
 import FlexBasisInput from "./StyleSettingInputFields/FlexBasisInput/FlexBasisInput";
 import GapInput from "./StyleSettingInputFields/GapInput/GapInput";
+import MinMaxSizeInput from "./StyleSettingInputFields/MinMaxSizeInput/MinMaxSizeInput";
 
 export default function StylesPanel() {
   return (
@@ -63,6 +64,11 @@ export default function StylesPanel() {
           <FlexShrinkInput />
           <FlexBasisInput />
         </div>
+      </StyleSection>
+      <StyleSection title="Layout" open>
+        <VisibilityInput />
+        <SizeInput />
+        <MinMaxSizeInput />
       </StyleSection>
     </div>
   );
