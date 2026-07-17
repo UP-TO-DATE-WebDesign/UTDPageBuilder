@@ -17,6 +17,7 @@ import AlignInput from "./StyleSettingInputFields/AlignInput/AlignInput";
 import FlexGrowInput from "./StyleSettingInputFields/FlexGrowInput/FlexGrowInput";
 import FlexShrinkInput from "./StyleSettingInputFields/FlexShrinkInput/FlexShrinkInput";
 import FlexBasisInput from "./StyleSettingInputFields/FlexBasisInput/FlexBasisInput";
+import GapInput from "./StyleSettingInputFields/GapInput/GapInput";
 
 export default function StylesPanel() {
   return (
@@ -51,6 +52,7 @@ export default function StylesPanel() {
         <FlexDirectionInput />
         <JustifyInput />
         <AlignInput />
+        <GapInput />
         <div className="flex gap-4 items-center">
           <FlexGrowInput />
           <FlexShrinkInput />

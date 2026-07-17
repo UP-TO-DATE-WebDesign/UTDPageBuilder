@@ -1,0 +1,6 @@
+{
+  "id": "gap",
+  "label": "Gap",
+  "default": "normal",
+  "units": ["px", "%", "rem"]
+}
