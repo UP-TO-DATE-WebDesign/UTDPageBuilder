@@ -11,6 +11,7 @@ import LayerOrderInput from "./StyleSettingInputFields/LayerOrderInput/LayerOrde
 import OverflowInput from "./StyleSettingInputFields/OverflowInput/OverflowInput";
 import ImageFitInput from "./StyleSettingInputFields/ImageFitInput/ImageFitInput";
 import ObjectPositionInput from "./StyleSettingInputFields/ObjectPositionInput/ObjectPositionInput";
+import FlexDirectionInput from "./StyleSettingInputFields/FlexDirectionInput/FlexDirectionInput";
 
 export default function StylesPanel() {
   return (
@@ -40,6 +41,9 @@ export default function StylesPanel() {
         <OverflowInput />
         <ImageFitInput />
         <ObjectPositionInput />
+      </StyleSection>
+      <StyleSection title="Flex" open>
+        <FlexDirectionInput />
       </StyleSection>
     </div>
   );
