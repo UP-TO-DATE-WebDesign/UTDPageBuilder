@@ -49,7 +49,10 @@ export default function StylesPanel() {
         <ImageFitInput />
         <ObjectPositionInput />
       </StyleSection>
-      <StyleSection title="Flex" open>
+      <StyleSection
+        title="Flex"
+        description="Turn the selected element into a flex container and control the layout, alignment, and spacing of its children."
+      >
         <FlexContainerInput />
         <FlexDirectionInput />
         <JustifyInput />
