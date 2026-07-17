@@ -67,7 +67,10 @@ export default function StylesPanel() {
           <FlexBasisInput />
         </div>
       </StyleSection>
-      <StyleSection title="Layout" open>
+      <StyleSection
+        title="Layout"
+        description="Control visibility, sizing constraints, margin, and padding for the selected element."
+      >
         <VisibilityInput />
         <SizeInput />
         <MinMaxSizeInput />
