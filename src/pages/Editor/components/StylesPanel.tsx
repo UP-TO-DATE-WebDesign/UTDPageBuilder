@@ -14,6 +14,7 @@ import ObjectPositionInput from "./StyleSettingInputFields/ObjectPositionInput/O
 import FlexDirectionInput from "./StyleSettingInputFields/FlexDirectionInput/FlexDirectionInput";
 import JustifyInput from "./StyleSettingInputFields/JustifyInput/JustifyInput";
 import AlignInput from "./StyleSettingInputFields/AlignInput/AlignInput";
+import FlexGrowInput from "./StyleSettingInputFields/FlexGrowInput/FlexGrowInput";
 
 export default function StylesPanel() {
   return (
@@ -48,6 +49,7 @@ export default function StylesPanel() {
         <FlexDirectionInput />
         <JustifyInput />
         <AlignInput />
+        <FlexGrowInput />
       </StyleSection>
     </div>
   );
