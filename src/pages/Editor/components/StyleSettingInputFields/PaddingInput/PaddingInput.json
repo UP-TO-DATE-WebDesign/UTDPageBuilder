@@ -1,0 +1,26 @@
+[
+  {
+    "id": "padding-top",
+    "label": "Top",
+    "default": "0",
+    "units": ["px", "%", "em"]
+  },
+  {
+    "id": "padding-right",
+    "label": "Right",
+    "default": "0",
+    "units": ["px", "%", "em"]
+  },
+  {
+    "id": "padding-left",
+    "label": "Left",
+    "default": "0",
+    "units": ["px", "%", "em"]
+  },
+  {
+    "id": "padding-bottom",
+    "label": "Bottom",
+    "default": "0",
+    "units": ["px", "%", "em"]
+  }
+]
